@@ -1,0 +1,34 @@
+{
+    "name": "ThumbAction",
+    "maps": [
+        {
+            "name": "ThumbMenu",
+            "id": "12c98578-7544-4e0d-b12f-f9878fa4a6b9",
+            "actions": [
+                {
+                    "name": "ThumbPress",
+                    "type": "Button",
+                    "id": "bec32467-4a02-42db-81d7-d12e6fbf8815",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9a8160d1-57ff-4f66-baa7-5b9d83ec990a",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThumbPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
