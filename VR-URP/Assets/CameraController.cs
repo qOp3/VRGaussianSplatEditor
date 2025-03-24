@@ -5,10 +5,12 @@ public class CameraController : MonoBehaviour
 {
     public InputActionProperty leftTriggerPress;
     public InputActionProperty rightTriggerPress;
+    public InputActionProperty thumbstickAction;
     public Transform leftController;
     public Transform rightController;
     public Transform splats;
     public Transform Camera;
+    public float rotationSpeed = 90f; // Degrees per second
 
     private Vector3 offset;
     private Transform MovingController;
@@ -61,7 +63,14 @@ public class CameraController : MonoBehaviour
 
     void RotateScene()
     {
+        Vector2 thumbstickInput = thumbstickAction.action.ReadValue<Vector2>();
+        Debug.Log(thumbstickInput);
 
+        float inputX = thumbstickInput.x;
+
+        // Rotate object around Y-axis based on thumbstick X
+        float rotationY = inputX * rotationSpeed * Time.deltaTime;
+        splats.Rotate(Vector3.up, rotationY, Space.World);
     }
 
     // 0: not controller pressed, 1: left pressed or right pressed, 2: both pressed
