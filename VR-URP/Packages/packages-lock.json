@@ -438,7 +438,7 @@
       }
     },
     "org.nesnausk.gaussian-splatting": {
-      "version": "file:D:/project/Unity-VR-Gaussian-Splatting-main/package",
+      "version": "file:../../package",
       "depth": 0,
       "source": "local",
       "dependencies": {

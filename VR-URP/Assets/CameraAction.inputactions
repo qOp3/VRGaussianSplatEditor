@@ -1,0 +1,54 @@
+{
+    "name": "CameraAction",
+    "maps": [
+        {
+            "name": "CameraDrag",
+            "id": "fcedce2a-face-47e1-bceb-a52e716c0818",
+            "actions": [
+                {
+                    "name": "leftGrag",
+                    "type": "Value",
+                    "id": "5276b450-ecc9-4caa-a896-2ca144bff041",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "rightGrag",
+                    "type": "Value",
+                    "id": "6cfb8ace-6e60-468f-be3d-91b32fe170e1",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1320e358-e684-473a-b6da-0a82bba24f17",
+                    "path": "<XRController>{LeftHand}/{Trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "leftGrag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd1fb634-87a7-43bd-928b-4bf55f6bff12",
+                    "path": "<XRController>{RightHand}/{Trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "rightGrag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
