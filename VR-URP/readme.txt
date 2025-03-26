@@ -1,8 +1,8 @@
-In this lab project, I created a custom interaction mechanism to observe large 3D models (e.g., 3D-scanned environments) in Unity.
+In this lab project, I created an interaction mechanism to observe large 3D models (e.g., 3D-scanned environments) in Unity.
 
 When dealing with large models, especially scanned environments, if the user is inside the model (within its collider), it's difficult to move and rotate the model. Moving the entire environment can also cause motion sickness.
 
-Instead of moving the model, I implemented a 6DOF (6 Degrees of Freedom) control system for the camera, this is similar to Creative Mode in Minecraft.By using a single controller to smoothly move the camera and turning their head to observe the surroundings, the user can minimize motion sickness during navigation.
+Instead of moving the model, I implemented a 6DOF (6 Degrees of Freedom) control system for the camera, this is similar to Creative Mode in Minecraft. By using a single controller to smoothly move the camera and turning their head to observe the surroundings, the user can minimize motion sickness during navigation.
 
 The user can press the trigger and move the controller; the displacement of the controller determines the direction and speed of the camera's movement.
 The movement can be controlled by both left and right controller.
