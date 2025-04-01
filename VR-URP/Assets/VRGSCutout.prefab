@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3398796096927319516
 Transform:
   m_ObjectHideFlags: 0
@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 3321121649696059692}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.96269274, y: 1.1997582, z: -1.3046684}
-  m_LocalScale: {x: 0.16937226, y: 0.18348658, z: 0.1270292}
+  m_LocalPosition: {x: -1.6, y: 3.26, z: -2.54}
+  m_LocalScale: {x: 0.89894325, y: 0.973855, z: 0.67420745}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4778649346858986152}
@@ -82,7 +82,7 @@ MonoBehaviour:
   handType: -1
   proximityType: -1
   executionOrder: 0
-  constraintOnMovement: 2
+  constraintOnMovement: 0
   useLocalSpaceForConstraint: 1
 --- !u!114 &5152050562112934290
 MonoBehaviour:
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bone & Organs
+  m_text: GSCutout
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1

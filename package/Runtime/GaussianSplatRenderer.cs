@@ -252,6 +252,7 @@ namespace GaussianSplatting.Runtime
 
         public GaussianCutout[] m_Cutouts;
 
+        [Tooltip("Gaussian splatting render shader")]
         public Shader m_ShaderSplats;
         public Shader m_ShaderComposite;
         public Shader m_ShaderDebugPoints;
@@ -349,6 +350,9 @@ namespace GaussianSplatting.Runtime
             public static readonly int SplatPosMouseDown = Shader.PropertyToID("_SplatPosMouseDown");
             public static readonly int SplatOtherMouseDown = Shader.PropertyToID("_SplatOtherMouseDown");
             public static readonly int OptimizeForQuest = Shader.PropertyToID("_OptimizeForQuest");
+            //VR sphere selection 
+            public static readonly int SelectionSphere = Shader.PropertyToID("_SelectionSphere");
+
         }
 
         [field: NonSerialized] public bool editModified { get; private set; }
@@ -372,6 +376,7 @@ namespace GaussianSplatting.Runtime
             SelectAll,
             OrBuffers,
             SelectionUpdate,
+            SphereSelectionUpdate,
             TranslateSelection,
             RotateSelection,
             ScaleSelection,
@@ -983,6 +988,27 @@ namespace GaussianSplatting.Runtime
             DispatchUtilsAndExecute(cmb, KernelIndices.SelectionUpdate, m_SplatCount);
             UpdateEditCountsAndBounds();
         }
+
+        //Sphere selection in VR
+        public void SelectSplatsInSphere(Vector3 worldCenter, float worldRadius)
+        {
+            if (!EnsureEditingBuffers()) return;
+
+            using var cmb = new CommandBuffer { name = "SelectInSphere" };
+            SetAssetDataOnCS(cmb, KernelIndices.SphereSelectionUpdate); 
+
+            Matrix4x4 worldToLocal = transform.worldToLocalMatrix;
+            Vector3 localCenter = worldToLocal.MultiplyPoint(worldCenter);
+            float localRadius = worldRadius / transform.lossyScale.x;
+
+            cmb.SetComputeVectorParam(m_CSSplatUtilities, "_SelectionSphere", new Vector4(localCenter.x, localCenter.y, localCenter.z, localRadius));
+            //cmb.SetComputeVectorParam(m_CSSplatUtilities, "_SelectionSphere", new Vector4(worldCenter.x, worldCenter.y, worldCenter.z, worldRadius));
+            //cmb.SetComputeIntParam(m_CSSplatUtilities, Props.SelectionMode, 1); // Add to selection
+
+            DispatchUtilsAndExecute(cmb, KernelIndices.SphereSelectionUpdate, m_SplatCount);
+            UpdateEditCountsAndBounds();
+        }
+        //----------------
 
         public void EditTranslateSelection(Vector3 localSpacePosDelta)
         {

@@ -11,11 +11,13 @@
 #pragma kernel CSSelectAll
 #pragma kernel CSOrBuffers
 #pragma kernel CSSelectionUpdate
+#pragma kernel CSSphereSelectionUpdate
 #pragma kernel CSTranslateSelection
 #pragma kernel CSRotateSelection
 #pragma kernel CSScaleSelection
 #pragma kernel CSExportData
 #pragma kernel CSCopySplats
+
 
 // DeviceRadixSort
 #pragma multi_compile __ KEY_UINT KEY_INT KEY_FLOAT
@@ -28,7 +30,7 @@
 #pragma kernel Scan
 #pragma kernel Downsweep
 
-// GPU sorting needs wave ops
+// GPU sorting needs wave ops : need DX 12
 #pragma require wavebasic
 #pragma require waveballot
 
@@ -477,6 +479,43 @@ void CSSelectionUpdate (uint3 id : SV_DispatchThreadID)
     else
         _SplatSelectedBits.InterlockedAnd(wordIdx * 4, ~(1u << bitIdx)); // -
 }
+
+// === Runtime VR Sphere-Based SelectionUpdate Kernel ===
+float4 _SelectionSphere;
+
+[numthreads(GROUP_SIZE, 1, 1)]
+void CSSphereSelectionUpdate (uint3 id : SV_DispatchThreadID)
+{
+    uint idx = id.x;
+    if (idx >= _SplatCount)
+        return;
+
+    float3 pos = LoadSplatPos(idx);
+    if (IsSplatCut(pos))
+        return;
+    float3 center = _SelectionSphere.xyz;
+    float radius = _SelectionSphere.w;
+    float distSq = dot(pos - center, pos - center);
+
+    if (distSq > radius * radius)
+        return;
+
+    uint wordIdx = idx / 32;
+    uint bitIdx = idx & 31;
+
+    _SplatSelectedBits.InterlockedOr(wordIdx * 4, 1u << bitIdx); // +
+
+    //if (isSelected)
+    //    _SplatSelectedBits.InterlockedOr(wordIdx * 4, 1u << bitIdx); // +
+    //else
+    //    _SplatSelectedBits.InterlockedAnd(wordIdx * 4, ~(1u << bitIdx)); // -
+
+}
+
+//---------------------------------------------------------
+
+
+
 
 float3 _SelectionDelta;
 

@@ -16,6 +16,8 @@ namespace GaussianSplatting.Runtime
     {
         public GaussianSplatRenderer gs;
         public Transform t;
+        public Transform Camera;
+        public GameObject cutoutPrefab;
         private int c = 0;
 
         void Start()
@@ -37,15 +39,33 @@ namespace GaussianSplatting.Runtime
 
         public void AddCutout()
         {
-            GaussianCutout cutout = ObjectFactory.CreateGameObject("GSCutout", typeof(GaussianCutout)).GetComponent<GaussianCutout>();
+            Vector3 spawnPosition = Camera.position + Camera.forward * 3f;
+            Quaternion spawnRotation = Quaternion.identity;
+            GaussianCutout cutout = Instantiate(cutoutPrefab, spawnPosition, spawnRotation).GetComponent<GaussianCutout>();
             Transform cutoutTr = cutout.transform;
-            cutoutTr.SetParent(gs.transform, false);
-            cutoutTr.localScale = (gs.asset.boundsMax - gs.asset.boundsMin) * 0.25f;
+            cutoutTr.SetParent(gs.transform, true);
             gs.m_Cutouts ??= Array.Empty<GaussianCutout>();
             ArrayUtility.Add(ref gs.m_Cutouts, cutout);
             gs.UpdateEditCountsAndBounds();
-            EditorUtility.SetDirty(gs);
-            Selection.activeGameObject = cutout.gameObject;
+
+        }
+
+        public void DeleteCutout()
+        {
+            // If there are no cutouts, exit
+            if (gs.m_Cutouts == null || gs.m_Cutouts.Length == 0)
+                return;
+
+            int lastIndex = gs.m_Cutouts.Length - 1;
+            GaussianCutout lastCutout = gs.m_Cutouts[lastIndex];
+
+            ArrayUtility.RemoveAt(ref gs.m_Cutouts, lastIndex);
+
+            // Destroy the cutout GameObject
+            if (lastCutout != null)
+                Destroy(lastCutout.gameObject);
+
+            gs.UpdateEditCountsAndBounds();
         }
 
 
@@ -53,7 +73,6 @@ namespace GaussianSplatting.Runtime
         {
             // Export edited gs data
 
-            // Example: Save to the project folder
             //D:\project\Unity - VR - Gaussian - Splatting - main\VR - URP\
             bool bakeTransform = true;
             string fileName = t.name + ".ply";

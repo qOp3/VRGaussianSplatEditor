@@ -64,7 +64,6 @@ public class CameraController : MonoBehaviour
     void RotateScene()
     {
         Vector2 thumbstickInput = thumbstickAction.action.ReadValue<Vector2>();
-        Debug.Log(thumbstickInput);
 
         float inputX = thumbstickInput.x;
 
@@ -86,12 +85,6 @@ public class CameraController : MonoBehaviour
         {
             offset = Camera.position - leftController.position;
             MovingController = leftController;
-            status = 1;
-        }
-        else if(left < 0.5f && right > 0.5f && status != 1)
-        {
-            offset = Camera.position - rightController.position;
-            MovingController = rightController;
             status = 1;
         }
         else if(left > 0.5f && right > 0.5f && status != 2)
