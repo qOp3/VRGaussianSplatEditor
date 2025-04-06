@@ -4,9 +4,9 @@ namespace GaussianSplatting.Runtime
 {
     public class VRSelector : MonoBehaviour
     {
-        public float radius = 20f;
+        public float radius = 0.3f;
         public GaussianSplatRenderer gs;
-        public Color lineColor = Color.green;
+        public bool selectionMode = false; 
 
         private static Mesh sphereMesh;
         private Material lineMaterial;
@@ -28,22 +28,39 @@ namespace GaussianSplatting.Runtime
 
         void OnRenderObject()
         {
-            if (sphereMesh == null || lineMaterial == null) return;
+            if (selectionMode)
+            {
+                if (sphereMesh == null || lineMaterial == null) return;
 
-            lineMaterial.SetPass(0);
-            GL.wireframe = true;
+                lineMaterial.SetPass(0);
+                GL.wireframe = true;
 
-            Matrix4x4 matrix = Matrix4x4.TRS(transform.position, Quaternion.identity, Vector3.one * radius * 2);
-            Graphics.DrawMeshNow(sphereMesh, matrix);
+                Matrix4x4 matrix = Matrix4x4.TRS(transform.position, Quaternion.identity, Vector3.one * radius * 2);
+                Graphics.DrawMeshNow(sphereMesh, matrix);
 
-            GL.wireframe = false;
+                GL.wireframe = false;
+            }
         }
 
         void Update()
         {
-            Vector3 sphereCenter = transform.position;
-            gs.SelectSplatsInSphere(sphereCenter, radius);
+            if (selectionMode)
+            {
+                Vector3 sphereCenter = transform.position;
+                gs.SelectSplatsInSphere(sphereCenter, radius);
+            }
 
+
+        }
+
+        public void SelectionModeSwitch()
+        {
+            selectionMode = !selectionMode;
+        }
+
+        public void DeleteSelectedSplats()
+        {
+            gs.EditDeleteSelected();
         }
 
         void OnDrawGizmosSelected()

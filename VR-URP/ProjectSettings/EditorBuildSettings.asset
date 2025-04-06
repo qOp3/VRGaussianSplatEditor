@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Test.unity
     guid: ca13622d0f7f243a3a3020f3b8b0650f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Demo.unity
     guid: d7db1c5e9e3bd1841b445942758be212
+  - enabled: 1
+    path: Assets/tree_scene.unity
+    guid: 14962a5b1707d2341ae95fcaf87e4f1f
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b090be5d6637982448afcd52055a67a9, type: 2}
     Varjo.XR.Settings: {fileID: 11400000, guid: 0075bbd24aaad854b82bd8d4e209cee3, type: 2}
