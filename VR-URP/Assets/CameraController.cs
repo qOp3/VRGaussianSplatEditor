@@ -105,4 +105,5 @@ public class CameraController : MonoBehaviour
         leftTriggerPress.action.Disable();
         rightTriggerPress.action.Disable();
     }
+
 }

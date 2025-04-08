@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace GaussianSplatting.Runtime
 {
@@ -9,6 +10,7 @@ namespace GaussianSplatting.Runtime
         public GaussianSplatRenderer gs;
         public bool selectionMode = false;
         public InputActionProperty rightTriggerPress;
+        public Slider slider;
 
         private static Mesh sphereMesh;
         private Material lineMaterial;
@@ -27,6 +29,8 @@ namespace GaussianSplatting.Runtime
             lineMaterial.hideFlags = HideFlags.HideAndDontSave;
             lineMaterial.SetInt("_ZWrite", 1);
             lineMaterial.SetInt("_ZTest", (int)UnityEngine.Rendering.CompareFunction.LessEqual);
+
+            slider.onValueChanged.AddListener(OnSliderValueChanged);
         }
 
         void OnRenderObject()
@@ -72,6 +76,11 @@ namespace GaussianSplatting.Runtime
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(transform.position, radius);
+        }
+
+        void OnSliderValueChanged(float value)
+        {
+            gs.m_SplatScale = value;
         }
     }
 }
