@@ -475,6 +475,18 @@ MonoBehaviour:
   radius: 0.24
   gs: {fileID: 2020109534}
   selectionMode: 0
+  rightTriggerPress:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Trigger Press
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f29c5ffc-0cbd-4f7f-8025-83a60d08bd00
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6551496721149917608, guid: 637de0abe60b4244bb8fb35dbf51987a, type: 3}
 --- !u!1 &748838654 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 202364687, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}

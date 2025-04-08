@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GaussianSplatting.Runtime
 {
@@ -6,10 +7,12 @@ namespace GaussianSplatting.Runtime
     {
         public float radius = 0.3f;
         public GaussianSplatRenderer gs;
-        public bool selectionMode = false; 
+        public bool selectionMode = false;
+        public InputActionProperty rightTriggerPress;
 
         private static Mesh sphereMesh;
         private Material lineMaterial;
+        private bool subtract;     // add or subtract gs splats
 
         void Start()
         {
@@ -47,7 +50,9 @@ namespace GaussianSplatting.Runtime
             if (selectionMode)
             {
                 Vector3 sphereCenter = transform.position;
-                gs.SelectSplatsInSphere(sphereCenter, radius);
+                float right = rightTriggerPress.action.ReadValue<float>();
+                subtract = (right > 0.5f) ? true : false; // press trigger to substract, release to add 
+                gs.SelectSplatsInSphere(sphereCenter, radius, subtract);
             }
 
 

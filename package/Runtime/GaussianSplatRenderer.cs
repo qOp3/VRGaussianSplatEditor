@@ -990,7 +990,7 @@ namespace GaussianSplatting.Runtime
         }
 
         //Sphere selection in VR
-        public void SelectSplatsInSphere(Vector3 worldCenter, float worldRadius)
+        public void SelectSplatsInSphere(Vector3 worldCenter, float worldRadius, bool subtract)
         {
             if (!EnsureEditingBuffers()) return;
 
@@ -1003,7 +1003,7 @@ namespace GaussianSplatting.Runtime
 
             cmb.SetComputeVectorParam(m_CSSplatUtilities, "_SelectionSphere", new Vector4(localCenter.x, localCenter.y, localCenter.z, localRadius));
             //cmb.SetComputeVectorParam(m_CSSplatUtilities, "_SelectionSphere", new Vector4(worldCenter.x, worldCenter.y, worldCenter.z, worldRadius));
-            //cmb.SetComputeIntParam(m_CSSplatUtilities, Props.SelectionMode, 1); // Add to selection
+            cmb.SetComputeIntParam(m_CSSplatUtilities, Props.SelectionMode, subtract ? 0 : 1); // select or deselect
 
             DispatchUtilsAndExecute(cmb, KernelIndices.SphereSelectionUpdate, m_SplatCount);
             UpdateEditCountsAndBounds();
