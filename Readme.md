@@ -5,15 +5,12 @@ This is a virtual reality (VR) editor for inspecting and cleaning 3D Gaussian Sp
 ### Overview
 3D Gaussian Splatting (3DGS) offers real-time rendering for 3D reconstruction using Gaussian ellipsoids. While powerful, 3DGS often produces floating artifacts due to motion, lighting inconsistency, or occlusions. This VR tool allows users to:
 
-- Navigate 3DGS models in immersive VR  
-- Precisely select and delete floating splats using a volumetric brush  
-- Adjust splat size for performance and clarity 
-
-Insert/delete Cutboxes during runtime for bulk cleanup.
-
+- Navigate 3DGS models in VR  
+- Select and delete floating splats using a volumetric brush  
+- Adjust splat size 
+- Insert/delete Cutboxes during runtime.
 
 
-### VR Interaction Design
 ## 🕹️ VR Interaction Design
 
 | Feature         | Description                                                                 |
