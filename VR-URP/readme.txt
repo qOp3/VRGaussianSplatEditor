@@ -1,3 +1,5 @@
+### Lab3
+
 In this lab project, I created an interaction mechanism to observe large 3D models (e.g., 3D-scanned environments) in Unity.
 
 When dealing with large models, especially scanned environments, if the user is inside the model (within its collider), it's difficult to move and rotate the model. Moving the entire environment can also cause motion sickness.

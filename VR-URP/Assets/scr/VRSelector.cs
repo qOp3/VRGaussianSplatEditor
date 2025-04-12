@@ -12,7 +12,7 @@ namespace GaussianSplatting.Runtime
         public InputActionProperty rightTriggerPress;
         public Slider slider;
 
-        private static Mesh sphereMesh;
+        private static Mesh sphereMesh; // a sphere to indicate the selection range
         private Material lineMaterial;
         private bool subtract;     // add or subtract gs splats
 
@@ -56,7 +56,7 @@ namespace GaussianSplatting.Runtime
                 Vector3 sphereCenter = transform.position;
                 float right = rightTriggerPress.action.ReadValue<float>();
                 subtract = (right > 0.5f) ? true : false; // press trigger to substract, release to add 
-                gs.SelectSplatsInSphere(sphereCenter, radius, subtract);
+                gs.SelectSplatsInSphere(sphereCenter, radius, subtract); // make selection in GaussianSplatRender script
             }
 
 
@@ -69,7 +69,7 @@ namespace GaussianSplatting.Runtime
 
         public void DeleteSelectedSplats()
         {
-            gs.EditDeleteSelected();
+            gs.EditDeleteSelected(); // Delete splats
         }
 
         void OnDrawGizmosSelected()
