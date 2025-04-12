@@ -25,7 +25,7 @@ namespace GaussianSplatting.Runtime
 
         }
 
-
+        // splat format 
         public struct InputSplatData
         {
             public Vector3 pos;
@@ -37,6 +37,7 @@ namespace GaussianSplatting.Runtime
             public Quaternion rot;
         }
 
+        // add cutout box
         public void AddCutout()
         {
             Vector3 spawnPosition = Camera.position + Camera.forward * 3f;
@@ -47,7 +48,6 @@ namespace GaussianSplatting.Runtime
             gs.m_Cutouts ??= Array.Empty<GaussianCutout>();
             ArrayUtility.Add(ref gs.m_Cutouts, cutout);
             gs.UpdateEditCountsAndBounds();
-
         }
 
         public void DeleteCutout()
@@ -73,7 +73,7 @@ namespace GaussianSplatting.Runtime
         {
             // Export edited gs data
 
-            //D:\project\Unity - VR - Gaussian - Splatting - main\VR - URP\
+            //export path .\VR - URP\
             bool bakeTransform = true;
             string fileName = t.name + ".ply";
             string rootPath = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));

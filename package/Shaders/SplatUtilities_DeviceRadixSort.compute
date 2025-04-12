@@ -503,8 +503,6 @@ void CSSphereSelectionUpdate (uint3 id : SV_DispatchThreadID)
     uint wordIdx = idx / 32;
     uint bitIdx = idx & 31;
 
-    //_SplatSelectedBits.InterlockedOr(wordIdx * 4, 1u << bitIdx); // +
-
     if (_SelectionMode)
         _SplatSelectedBits.InterlockedOr(wordIdx * 4, 1u << bitIdx); // +
     else
