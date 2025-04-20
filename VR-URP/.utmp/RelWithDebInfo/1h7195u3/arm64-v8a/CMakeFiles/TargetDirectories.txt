@@ -1,0 +1,5 @@
+D:/project/Unity-VR-Gaussian-Splatting-main/VR-URP/.utmp/RelWithDebInfo/1h7195u3/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/project/Unity-VR-Gaussian-Splatting-main/VR-URP/.utmp/RelWithDebInfo/1h7195u3/arm64-v8a/CMakeFiles/rebuild_cache.dir
+D:/project/Unity-VR-Gaussian-Splatting-main/VR-URP/.utmp/RelWithDebInfo/1h7195u3/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+D:/project/Unity-VR-Gaussian-Splatting-main/VR-URP/.utmp/RelWithDebInfo/1h7195u3/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+D:/project/Unity-VR-Gaussian-Splatting-main/VR-URP/.utmp/RelWithDebInfo/1h7195u3/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

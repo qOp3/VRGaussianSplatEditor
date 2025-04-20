@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Mathematics;
-using UnityEditor;
-using UnityEditor.EditorTools;
+//using UnityEditor;
+//using UnityEditor.EditorTools;
 using UnityEngine;
 //using GaussianSplatting.Editor;
 
@@ -46,7 +46,14 @@ namespace GaussianSplatting.Runtime
             Transform cutoutTr = cutout.transform;
             cutoutTr.SetParent(gs.transform, true);
             gs.m_Cutouts ??= Array.Empty<GaussianCutout>();
-            ArrayUtility.Add(ref gs.m_Cutouts, cutout);
+            //ArrayUtility.Add(ref gs.m_Cutouts, cutout);
+            int oldLength = gs.m_Cutouts?.Length ?? 0;
+            GaussianCutout[] newCutouts = new GaussianCutout[oldLength + 1];
+            if (oldLength > 0)
+                System.Array.Copy(gs.m_Cutouts, newCutouts, oldLength);
+            newCutouts[oldLength] = cutout;
+            gs.m_Cutouts = newCutouts;
+
             gs.UpdateEditCountsAndBounds();
         }
 
@@ -59,7 +66,10 @@ namespace GaussianSplatting.Runtime
             int lastIndex = gs.m_Cutouts.Length - 1;
             GaussianCutout lastCutout = gs.m_Cutouts[lastIndex];
 
-            ArrayUtility.RemoveAt(ref gs.m_Cutouts, lastIndex);
+            GaussianCutout[] newCutouts = new GaussianCutout[lastIndex];
+            System.Array.Copy(gs.m_Cutouts, newCutouts, lastIndex);
+            gs.m_Cutouts = newCutouts;
+            //ArrayUtility.RemoveAt(ref gs.m_Cutouts, lastIndex);
 
             // Destroy the cutout GameObject
             if (lastCutout != null)

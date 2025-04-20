@@ -1,0 +1,1 @@
+D:\project\Unity-VR-Gaussian-Splatting-main\VR-URP\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\FramePacing\UnitySwappyWrapper.h

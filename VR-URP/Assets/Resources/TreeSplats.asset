@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b71fae31e6c7d438e8566dc713e666, type: 3}
+  m_Name: TreeSplats
+  m_EditorClassIdentifier: 
+  m_FormatVersion: 20240801
+  m_SplatCount: 1773084
+  m_BoundsMin: {x: -0.6685076, y: -8.302632, z: -4.264427}
+  m_BoundsMax: {x: 3.5083685, y: 10.864044, z: -0.028824091}
+  m_DataHash:
+    serializedVersion: 2
+    Hash: 1cb2a229af822162941f9dd65fd08dfa
+  m_LayerInfo:
+  - x: 0
+    y: 1773084
+  m_PosFormat: 0
+  m_ScaleFormat: 0
+  m_SHFormat: 0
+  m_ColorFormat: 0
+  m_clusteredSHData: {fileID: 0}
+  m_layerData:
+  - layer: 0
+    m_PosData: {fileID: 4900000, guid: 2755910e0cb86564798f23c36897fd88, type: 3}
+    m_ColorData: {fileID: 4900000, guid: 1f9e0ff109007cb4d8b89ebf839fb846, type: 3}
+    m_OtherData: {fileID: 4900000, guid: 7688874056c720d4fb8b5c104e15caca, type: 3}
+    m_SHData: {fileID: 4900000, guid: dae8031edace794448ada7bd9c4f1424, type: 3}
+    m_ChunkData: {fileID: 0}
+  m_Cameras: []
